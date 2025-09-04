@@ -63,7 +63,17 @@ class Calibrator(object):
                 # view the corners
                 if self.visualization:
                     cv2.drawChessboardCorners(img, (w, h), cp_img, ret)
-                    cv2.imshow('FoundCorners', img)
+                    # 调整图片大小以适应窗口显示
+                    height, width = img.shape[:2]
+                    max_display_size = 800  # 最大显示尺寸
+                    if height > max_display_size or width > max_display_size:
+                        scale = max_display_size / max(height, width)
+                        new_width = int(width * scale)
+                        new_height = int(height * scale)
+                        img_resized = cv2.resize(img, (new_width, new_height))
+                    else:
+                        img_resized = img
+                    cv2.imshow('FoundCorners', img_resized)
                     cv2.waitKey(500)
 
         # calibrate the camera

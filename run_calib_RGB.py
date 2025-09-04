@@ -12,9 +12,9 @@ from calibrate_helper import Calibrator
 
 
 def main():
-    img_dir = "./pic/RGB_camera_calib_img"
-    shape_inner_corner = (11, 8)
-    size_grid = 0.02
+    img_dir = "./xiangjineican/extracted_frames"
+    shape_inner_corner = (7, 7)
+    size_grid = 0.022
     # create calibrator
     calibrator = Calibrator(img_dir, shape_inner_corner, size_grid)
     # calibrate the camera
